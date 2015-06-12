@@ -109,6 +109,7 @@ function addContextCurrentTransform(ctx) {
 
     ctx.scale = function ctxScale(x, y) {
       var m = this._transformMatrix;
+      ctx.fontSizeMultiplier = Number(m[0]);
       m[0] = m[0] * x;
       m[1] = m[1] * x;
       m[2] = m[2] * y;
@@ -1219,16 +1220,16 @@ var CanvasGraphics = (function CanvasGraphicsClosure() {
 //          }
 
           if (str && !font.disableFontFace) {
-              var curFontSize = fontSize * scale * textHScale + 3;
+              var curFontSize = fontSize * scale * textHScale /*+ 3*/;
               switch (current.textRenderingMode) {
                 case TextRenderingMode.FILL:
-                    ctx.fillText(str, 0, 0, canvasWidth, curFontSize);
+                    ctx.fillText(str, 0, 0, canvasWidth, curFontSize, ctx.fontSizeMultiplier);
                     break;
                 case TextRenderingMode.STROKE:
-                    ctx.strokeText(str, 0, 0, canvasWidth, curFontSize);
+                    ctx.strokeText(str, 0, 0, canvasWidth, curFontSize, ctx.fontSizeMultiplier);
                     break;
                 case TextRenderingMode.FILL_STROKE:
-                    ctx.fillText(str, 0, 0, canvasWidth, curFontSize);
+                    ctx.fillText(str, 0, 0, canvasWidth, curFontSize, ctx.fontSizeMultiplier);
                     break;
                 case TextRenderingMode.INVISIBLE:
                 case TextRenderingMode.ADD_TO_PATH:

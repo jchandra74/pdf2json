@@ -1,6 +1,6 @@
 {
-  "name": "pdf2json",
-  "_id": "pdf2json@0.7.1",
+  "name": "pdf2json_jcfork",
+  "_id": "pdf2json_jcfork@0.7.1",
   "version": "0.7.1",
   "description": "A PDF file parser that converts PDF binaries to text based JSON, powered by porting a fork of PDF.JS to Node.js",
   "keywords": [
